@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		//Наслідування 
+		function Man(name) {
+			this.name = name;
+			this.walk = function () {
+				document.write('I can walk ' + "<br />")
+			};
+			this.eat = function () {
+				document.write('I can eat' + "<br />")
+			};
+			this.drink = function () {
+				document.write('I can drink' + '<br />');
+			};
+			this.showInfo = function () {
+				document.write('I am a ' + this.name + '  and :' + '<br />');
+			};
+		};
+
+		function Doctor (name) {
+			this.name = name;
+			this.cure = function () {
+				document.write('I can cure' + '<br / >');
+			};
+		};
+
+		function Soldier (name) {
+			this.name = name;
+			this.shoot = function (){
+				document.write('I can shoot' + '<br />');
+			};
+		};
+
+		Doctor.prototype = new Man();
+		Soldier.prototype = new Man();
+
+		var doctor = new Doctor("Doctor");
+		var soldier = new Soldier("Soldier");
+
+		doctor.showInfo();
+		doctor.walk();
+		doctor.eat();	
+		doctor.drink();
+		doctor.cure();
+
+		document.write('<br/>');
+
+		soldier.showInfo();
+		soldier.walk();
+		soldier.eat();	
+		soldier.drink();
+		soldier.shoot();
+
+
+		function Dentist() {
+			this.name = name;
+            this.cure = function(){
+                document.write('I can only cure your teeth' + '<br/>');
+            };
+        };
+        function Surgeon() {
+        	this.name = name;
+            this.cure = function(){
+                document.write('I can only do the surgery' + '<br/>');
+            };
+        };
+
+        Dentist.prototype = new Doctor(); 
+        Surgeon.prototype = new Doctor();
+
+        var dent = new Dentist('Dentist');
+        var surg = new Surgeon('Surgeon');
+       
+        document.write('<br/>');
+        dent.cure();
+        surg.cure();
+	</script>
+
+</body>
+</html>
